@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    padding: 15px 30px;
+}
+.header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffcc00;
+}
+.header .search-bar {
+    flex: 1;
+    margin: 0 20px;
+}
+.header .search-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.header .search-bar button {
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+.header .search-bar button:hover {
+    background-color: #e6b800;
+}
+.header .account-cart a {
+    color: #eaeaea;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.header .account-cart a:hover {
+    color: #ffcc00;
+}
+
+/* Sticky Header */
+.header.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar */
+.nav ul {
+    display: flex;
+    list-style: none;
+    background-color: #1a1a2e;
+    margin: 0;
+    padding: 10px;
+}
+.nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+.nav ul li a {
+    color: #eaeaea;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+.nav ul li:hover a {
+    color: #ffcc00;
+}
+.nav ul li:hover .dropdown {
+    display: block;
+}
+.nav .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+.nav .dropdown li a {
+    color: #333;
+    padding: 5px 10px;
+    display: block;
+}
+.nav .dropdown li a:hover {
+    color: #ffcc00;
+}
+
+/* Product Section */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+    background-color: #ffffff;
+}
+.product {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+.product img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+.product h3 {
+    font-size: 20px;
+    margin: 15px 0;
+    color: #333;
+}
+.product .price {
+    font-size: 18px;
+    color: #ff5722;
+    font-weight: bold;
+}
+.product .discount {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+}
+.product .rating {
+    color: #ffc107;
+    margin: 10px 0;
+}
+.product button {
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.product button:hover {
+    background-color: #37475a;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.back-to-top:hover {
+    background-color: #37475a;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    padding: 30px;
+    text-align: center;
+}
+.footer .footer-links {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.footer .footer-links div {
+    text-align: left;
+}
+.footer .footer-links h4 {
+    margin-bottom: 10px;
+}
+.footer .footer-links a {
+    color: #eaeaea;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+.footer .footer-links a:hover {
+    color: #ffcc00;
+}
