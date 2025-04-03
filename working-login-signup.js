@@ -1,11 +1,25 @@
+async function saveUserData(endpoint, data) {
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        console.log(result.message);
+        alert(result.message);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    }
+}
+
 function handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Add login logic here (e.g., API call)
-    console.log('Login attempt:', { email, password });
-    alert('Login successful!');
+    saveUserData('/api/login', { email, password });
     return false;
 }
 
@@ -21,8 +35,6 @@ function handleSignup(event) {
         return false;
     }
 
-    // Add signup logic here (e.g., API call)
-    console.log('Signup attempt:', { name, email, password });
-    alert('Signup successful!');
+    saveUserData('/api/signup', { name, email, password });
     return false;
 }
