@@ -15,24 +15,41 @@ document.querySelectorAll('.nav li').forEach((menuItem) => {
     });
 });
 
-// Search Bar Functionality
-document.querySelector('.search-bar button').addEventListener('click', () => {
-    const searchInput = document.querySelector('.search-bar input').value.toLowerCase().trim();
-    const products = document.querySelectorAll('.product');
-    let found = false;
+// Enhanced Search Bar Functionality with Dropdown
+const searchInput = document.querySelector('.search-bar input');
+const searchDropdown = document.querySelector('.search-dropdown');
+const products = document.querySelectorAll('.product');
 
-    products.forEach((product) => {
-        const productName = product.querySelector('h3').textContent.toLowerCase();
-        if (productName.includes(searchInput)) {
-            product.style.display = 'block';
-            found = true;
-        } else {
-            product.style.display = 'none';
-        }
-    });
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    searchDropdown.innerHTML = ''; // Clear previous results
 
-    if (!found) {
-        alert('No products found matching your search.');
+    if (query) {
+        let matches = 0;
+        products.forEach((product) => {
+            const productName = product.querySelector('h3').textContent.toLowerCase();
+            if (productName.includes(query)) {
+                const listItem = document.createElement('li');
+                listItem.textContent = product.querySelector('h3').textContent;
+                listItem.addEventListener('click', () => {
+                    searchInput.value = listItem.textContent;
+                    searchDropdown.style.display = 'none';
+                    product.scrollIntoView({ behavior: 'smooth' });
+                });
+                searchDropdown.appendChild(listItem);
+                matches++;
+            }
+        });
+
+        searchDropdown.style.display = matches > 0 ? 'block' : 'none';
+    } else {
+        searchDropdown.style.display = 'none';
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-bar')) {
+        searchDropdown.style.display = 'none';
     }
 });
 
@@ -49,16 +66,6 @@ document.querySelectorAll('.product button').forEach((button) => {
     });
 });
 
-// Sticky Header Functionality
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 50) {
-        header.classList.add('sticky');
-    } else {
-        header.classList.remove('sticky');
-    }
-});
-
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('.nav a').forEach((link) => {
     link.addEventListener('click', (e) => {
@@ -69,22 +76,4 @@ document.querySelectorAll('.nav a').forEach((link) => {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     });
-});
-
-// Back to Top Button Functionality
-const backToTopButton = document.createElement('button');
-backToTopButton.textContent = '↑ Top';
-backToTopButton.classList.add('back-to-top');
-document.body.appendChild(backToTopButton);
-
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-        backToTopButton.style.display = 'block';
-    } else {
-        backToTopButton.style.display = 'none';
-    }
 });
